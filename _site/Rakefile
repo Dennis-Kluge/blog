@@ -22,3 +22,8 @@ task :blog do
   end
   puts "Created '_posts/#{time}-#{name}.html'"
 end
+
+desc "deploys the site"
+task :deploy do
+ sh "jekyll && rsync -avz _site/ root@horstmumpitz.de:/var/www/vhosts/horstmumpitz.de/httpdocs/"
+end
